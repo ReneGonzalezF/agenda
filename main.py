@@ -1,3 +1,14 @@
+from backend import (
+    crearTablaContactos,
+    agregarContactos,
+    mostrarContactos,
+    buscarContactos,
+    eliminarContactos
+)
+
+crearTablaContactos()
+
+
 agenda=[] #se crea como lista, ya que, siendo solo dict, se guarda 1 solo contacto, en cambio se hara una lista de diccionarios. Lista el indice y el diccionario la info del contacto
 
 while True:
