@@ -6,7 +6,7 @@ while True:
     print("2.-BUSCAR CONTACTOS")
     print("3.-VER CONTACTOS")
     print("4.-ELIMINAR CONTACTOS")
-    print("5.-ELIMINAR CONTACTOS")
+    print("5.-Salir")
     opcion=input()
     if opcion.isdigit():
         opcion=int(opcion)
@@ -39,8 +39,8 @@ while True:
                 print(f"CONTACTO ENCONTRADO CORREO:{i['CORREO']}")
                 encontrado=True
                 break
-            if not encontrado:
-                print("CONTACTO NO ENCONTRADO")
+        if not encontrado:
+            print("CONTACTO NO ENCONTRADO")
         continue
     elif opcion ==3:
         for i,x in enumerate(agenda):
@@ -51,21 +51,13 @@ while True:
         continue
     elif opcion==4:
         nombre3=input("INGRESE NOMBRE DE CONTACTO A ELIMINAR:")
-        agenda2=[]
-        eliminado=False
-        for i in agenda:
-            if i["NOMBRE"]!=nombre3:
-                agenda2.append(i)
-            else:
-                eliminado=True
-        if eliminado:
-                agenda=agenda2
-                print("CONTACTO ELIMINADO EXITOSAMENTE")
+        agenda2=[i for i in agenda if i['NOMBRE']!=nombre3]
+        if len(agenda2)<len(agenda):
+            agenda=agenda2
+            print("CONTACTO ELIMINADO CORRECTAMENTE")
+            print("---------------------------------")
         else:
             print("CONTACTO NO EXISTE")
-            
-        
-        continue
     elif opcion==5:
         print("GRACIAS POR USAR LA AGENDA, SALIENDO...")
         break
