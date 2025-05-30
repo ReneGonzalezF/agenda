@@ -37,38 +37,22 @@ while True:
             else:
                 print("INGRESE CORREO VALIDO")
         nuevo_contacto={'NOMBRE':nombre,'NUMERO':numero,'CORREO':email}
-        agenda.append(nuevo_contacto)
+        agregarContactos(nombre,numero,email)
         print("CONTACTO AGREGADO EXITOSAMENTE!")
         
     elif opcion ==2:
         nombre2=input("INGRESE ID O NOMBRE DE CONTACTO:")
-        encontrado=False
-        for i in agenda:
-            if i['NOMBRE'] == nombre2:
-                print(f"CONTACTO ENCONTRADO NOMBRE:{i['NOMBRE']}")
-                print(f"CONTACTO ENCONTRADO NUMERO:{i['NUMERO']}")
-                print(f"CONTACTO ENCONTRADO CORREO:{i['CORREO']}")
-                encontrado=True
-                break
-        if not encontrado:
-            print("CONTACTO NO ENCONTRADO")
+        contacto=buscarContactos(nombre2)
+        for i in contacto:
+            print(f"Nombre: {i[1]}, Telefono: {i[2]},Email: {i[3]}")
         continue
     elif opcion ==3:
-        for i,x in enumerate(agenda):
-            print(f"CONTACTO N°: {i+1}")
-            print(f"NOMBRE:{x["NOMBRE"]}")
-            print(f"FONO:{x["NUMERO"]}")
-            print(f"EMAIL:{x["CORREO"]}")
+        for i in mostrarContactos():
+            print(f"Nombre : {i}")
         continue
     elif opcion==4:
         nombre3=input("INGRESE NOMBRE DE CONTACTO A ELIMINAR:")
-        agenda2=[i for i in agenda if i['NOMBRE']!=nombre3]
-        if len(agenda2)<len(agenda):
-            agenda=agenda2
-            print("CONTACTO ELIMINADO CORRECTAMENTE")
-            print("---------------------------------")
-        else:
-            print("CONTACTO NO EXISTE")
+        eliminarContactos(nombre3)
     elif opcion==5:
         print("GRACIAS POR USAR LA AGENDA, SALIENDO...")
         break

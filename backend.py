@@ -5,8 +5,8 @@ import sqlite3
 def crearTablaContactos():
     conexion=sqlite3.connect('base_de_datos.db')
     cursor=conexion.cursor()
-    cursor.execute(''' CREATE TABLE IF NOT EXIST contactos
-               (id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    cursor.execute(''' CREATE TABLE IF NOT EXISTS contactos( 
+                id INTEGER PRIMARY KEY AUTOINCREMENT, 
                 nombre TEXT, 
                 telefono TEXT, 
                 email TEXT)''')
